@@ -12,9 +12,9 @@ const app = express();
 
 // use middlewares
 app.use(express.json());
+app.use(cors());
 
 // Use routes
-app.use(cors);
 app.use(todoRouter);
 app.use(userRouter);
 
