@@ -1,5 +1,6 @@
 import { Router } from "express";
-import { login, logout, register } from "../controllers/user.js";
+import { getprofile, login, logout, register, updateProfile } from "../controllers/user.js";
+import { userAvatarUpload } from "../middlewares/upload.js";
 
 // create router
 const userRouter = Router();
@@ -9,7 +10,11 @@ userRouter.post("/users/register", register);
 
 userRouter.post("/users/login", login);
 
+userRouter.get('/users/me', getprofile); 
+
 userRouter.post("/users/logout", logout);
+
+userRouter.post('/users/me', userAvatarUpload.single('userAvatar'), updateProfile)
 
 
 // export router
